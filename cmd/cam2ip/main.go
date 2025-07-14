@@ -23,6 +23,8 @@ func main() {
 	flag.IntVar(&srv.Delay, "delay", 10, "Delay between frames, in milliseconds [CAM2IP_DELAY]")
 	flag.Float64Var(&srv.Width, "width", 640, "Frame width [CAM2IP_WIDTH]")
 	flag.Float64Var(&srv.Height, "height", 480, "Frame height [CAM2IP_HEIGHT]")
+	flag.Float64Var(&srv.CropWidth, "crop-width", 0, "Crop to width (default no crop)")
+	flag.Float64Var(&srv.CropHeight, "crop-height", 0, "Crop to height (default no crop)")
 	flag.IntVar(&srv.Quality, "quality", 75, "Image quality [CAM2IP_QUALITY]")
 	flag.IntVar(&srv.Rotate, "rotate", 0, "Rotate image, valid values are 90, 180, 270 [CAM2IP_ROTATE]")
 	flag.StringVar(&srv.Flip, "flip", "", "Flip image, valid values are horizontal and vertical [CAM2IP_FLIP]")
@@ -34,7 +36,7 @@ func main() {
 
 	flag.Usage = func() {
 		stderr("Usage: %s [<flags>]\n", name)
-		order := []string{"index", "delay", "width", "height", "quality", "rotate", "flip", "no-webgl",
+		order := []string{"index", "delay", "width", "height", "crop-width", "crop-height", "quality", "rotate", "flip", "no-webgl",
 			"timestamp", "time-format", "bind-addr", "htpasswd-file"}
 
 		for _, name := range order {
@@ -64,6 +66,8 @@ func main() {
 		Flip:       srv.Flip,
 		Width:      srv.Width,
 		Height:     srv.Height,
+		CropWidth:  srv.CropWidth,
+		CropHeight: srv.CropHeight,
 		Timestamp:  srv.Timestamp,
 		TimeFormat: srv.TimeFormat,
 	})

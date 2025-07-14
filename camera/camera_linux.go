@@ -143,6 +143,10 @@ func (c *Camera) Read() (img image.Image, err error) {
 		img = im.Flip(img, c.opts.Flip)
 	}
 
+	if c.opts.CropWidth > 0 && c.opts.CropHeight > 0 {
+		img = im.CropImageCenter(img, int(c.opts.CropWidth), int(c.opts.CropHeight))
+	}
+
 	if c.opts.Timestamp {
 		img = im.Timestamp(img, c.opts.TimeFormat)
 	}

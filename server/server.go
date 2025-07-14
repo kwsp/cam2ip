@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/abbot/go-http-auth"
+	auth "github.com/abbot/go-http-auth"
 
 	"github.com/gen2brain/cam2ip/handlers"
 )
@@ -22,6 +22,9 @@ type Server struct {
 
 	Width  float64
 	Height float64
+
+	CropWidth  float64
+	CropHeight float64
 
 	Quality int
 	Rotate  int

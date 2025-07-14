@@ -13,6 +13,8 @@ type Options struct {
 	Flip       string
 	Width      float64
 	Height     float64
+	CropWidth  float64
+	CropHeight float64
 	Timestamp  bool
 	TimeFormat string
 }
